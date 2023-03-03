@@ -3,5 +3,4 @@ class RecipesFacade
     RecipesService.get_recipes_by_country(country)
   end
 
-
 end
