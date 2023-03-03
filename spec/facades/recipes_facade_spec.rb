@@ -1,19 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'recipes facade' do
-  it 'returns an array of recipes for a specified country', :vcr do
+  it 'creates recipe poros out of the returned hash', :vcr do
     recipes = RecipesFacade.get_recipes_by_country("Norway")
     expect(recipes).to be_an(Array)
     recipes.each do |recipe|
-      expect(recipe).to have_key(:recipe)
-      expect(recipe[:recipe]).to be_a(Hash)
-      expect(recipe[:recipe]).to have_key(:uri)
-      expect(recipe[:recipe]).to have_key(:label)
-      expect(recipe[:recipe]).to have_key(:image)
-      expect(recipe[:recipe]).to have_key(:images)
-      expect(recipe[:recipe]).to have_key(:source)
-      expect(recipe[:recipe]).to have_key(:ingredients)
+      expect(recipe).to be_a(Recipe)
     end
+    expect(recipes[0].title).to eq("The White Gold of Norway?!")
+    expect(recipes[0].country).to eq("Norway")
+    expect(recipes[0].url).to eq("http://honestcooking.com/the-white-gold-of-norway/")
   end
 
 
