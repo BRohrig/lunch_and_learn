@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "recipes requests API V1", :vcr do
   it 'can find recipes for a country' do
-    get api_v1_recipes_path, params: "Norway"
+    get api_v1_recipes_path, params: {query: "Norway"}
 
     expect(response).to be_successful
     parsed_response = JSON.parse(response.body, symbolize_names: true)
