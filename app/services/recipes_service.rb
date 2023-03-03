@@ -1,8 +1,9 @@
 class RecipesService
   def self.get_recipes_by_country(country)
     request = conn.get("?q=#{country}")
+    JSON.parse(request.body, symbolize_names: true)
   end
-  
+
   private
 
   def self.conn
