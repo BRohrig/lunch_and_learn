@@ -31,8 +31,8 @@ RSpec.describe 'user creation endpoint' do
 
     parsed = JSON.parse(response.body, symbolize_names: true)
 
-    expect(parsed).to have_key(:error)
-    expect(parsed[:error]).to eq("This email is already in use")
+    expect(parsed).to have_key(:errors)
+    expect(parsed[:errors]).to eq(["Email has already been taken"])
 
   end
 
