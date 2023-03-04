@@ -13,8 +13,8 @@ RSpec.describe 'user creation endpoint' do
     parsed = JSON.parse(response.body, symbolize_names: true)
 
     user = User.last
-    expect(user.name).to eq("I am a nice user")
-    expect(user.email).to eq("notahacker@niceperson.com")
+    expect(user.name).to eq('I am a nice user')
+    expect(user.email).to eq('notahacker@niceperson.com')
     expect(parsed).to have_key(:data)
     expect(parsed[:data][:type]).to eq('user')
     expect(parsed[:data][:id]).to eq(user.id.to_s)
