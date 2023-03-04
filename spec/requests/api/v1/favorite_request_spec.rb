@@ -66,4 +66,18 @@ RSpec.describe 'favorite recipes endpoint' do
       expect(favorite[:attributes]).to have_key(:created_at)
     end
   end
+
+  it 'displays an appropriate error when attempting to get favorites for a user with an incorrect api key' do
+    user = create(:user)
+    favorite = create(:favorite, user_id: user.id)
+
+    get api_v1_favorites_path
+    
+    expect(response).to_not be_successful
+    expect(response.status).to eq(403)
+
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed[:errors]).to eq('Invalid API key')
+  end
 end
