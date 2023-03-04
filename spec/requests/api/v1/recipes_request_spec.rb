@@ -27,9 +27,9 @@ RSpec.describe "recipes requests API V1", :vcr do
   end
 
   it 'can pick a random country if none is supplied and return recipes for that country', vcr: { record: :new_episodes } do
-    get api_v1_recipes_path
-
     country_list = CountriesFacade.country_names
+   
+    get api_v1_recipes_path
 
     expect(response).to be_successful
 

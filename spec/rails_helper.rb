@@ -1,7 +1,10 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter "/spec"
+end
+
 require 'vcr'
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'
