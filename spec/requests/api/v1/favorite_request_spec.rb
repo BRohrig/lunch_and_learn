@@ -25,5 +25,23 @@ RSpec.describe "favoriting a recipe endpoint" do
     expect(parsed).to eq({"success": "Favorite added successfully"})
   end
 
+  it 'returns an error for invalid api_key if the correct one is not given' do
+    headers = { "Content-Type": 'application/json' }
+    body = {  "api_key": "I AM A HACKER RAWR",
+              "country": 'Brazil',
+              "recipe_link": "https://www.deliciousmeat.com/STEAK",
+              "recipe_title": "MEAT IS SO TASTY" }
+
+    post api_v1_favorites_path, params: body.to_json, headers: headers
+    expect(response).to_not be_successful
+    expect(response.status).to eq(403)
+
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed[:errors]).to eq('Invalid API key')
+
+
+  end
+
 
 end
