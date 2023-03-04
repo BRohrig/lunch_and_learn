@@ -4,10 +4,8 @@ class RecipesService
     JSON.parse(request.body, symbolize_names: true)
   end
 
-  private
-
   def self.conn
-    Faraday.new(url: "https://api.edamam.com/api/recipes/v2") do |f|
+    Faraday.new(url: 'https://api.edamam.com/api/recipes/v2') do |f|
       f.params['app_id'] = ENV['EDAMAM_APP_ID']
       f.params['type'] = 'any'
       f.params['beta'] = true

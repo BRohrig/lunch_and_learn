@@ -4,6 +4,4 @@ class UnsplashFacade
       Photo.new(photo_data)
     end
   end
-
-
 end

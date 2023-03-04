@@ -6,5 +6,4 @@ class Photo
     @url = input[:urls][:raw]
     @alt_tag = input[:alt_description]
   end
-
 end

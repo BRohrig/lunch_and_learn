@@ -4,10 +4,8 @@ class YouTubeService
     JSON.parse(request.body, symbolize_names: true)
   end
 
-  private
-
   def self.conn
-    Faraday.new(url: "https://www.googleapis.com/youtube/v3/") do |f|
+    Faraday.new(url: 'https://www.googleapis.com/youtube/v3/') do |f|
       f.params['key'] = ENV['YOUTUBE_API_KEY']
     end
   end

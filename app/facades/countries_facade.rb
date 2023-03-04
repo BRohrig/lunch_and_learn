@@ -4,6 +4,4 @@ class CountriesFacade
       country[:name][:common]
     end
   end
-
-
 end

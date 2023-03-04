@@ -9,6 +9,4 @@ RSpec.describe 'countries service' do
       expect(country).to have_key(:name)
     end
   end
-
-
 end
