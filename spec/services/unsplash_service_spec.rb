@@ -6,8 +6,8 @@ RSpec.describe 'unsplash photo library API service' do
 
     expect(response).to have_key(:results)
     expect(response[:results]).to be_an(Array)
-    expect(response(:results[0])).to have_key(:urls)
-    expect(response(:results[0])).to have_key(:alt_description)
+    expect(response[:results][0]).to have_key(:urls)
+    expect(response[:results][0]).to have_key(:alt_description)
   end
 
 
