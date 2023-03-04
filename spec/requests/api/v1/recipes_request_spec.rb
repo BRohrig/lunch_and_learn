@@ -6,7 +6,6 @@ RSpec.describe "recipes requests API V1", :vcr do
 
     expect(response).to be_successful
     parsed_response = JSON.parse(response.body, symbolize_names: true)
-binding.pry
     expect(parsed_response).to have_key(:data)
     expect(parsed_response[:data]).to be_an(Array)
     parsed_response[:data].each do |recipe|
@@ -22,6 +21,11 @@ binding.pry
       expect(recipe[:attributes][:country]).to eq("Norway")
       expect(recipe[:attributes]).to have_key(:image)
     end
+  end
+
+  it 'can pick a random country if none is supplied and return recipes for that country' do
+    get api_v1_recipes_path
+
   end
 
 
