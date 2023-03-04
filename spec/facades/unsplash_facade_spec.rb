@@ -5,6 +5,8 @@ RSpec.describe 'unsplash facade' do
     photo_list = UnsplashFacade.get_ten_photos("Peru")
 
     expect(photo_list).to be_an(Array)
+    expect(photo_list.count).to eq(10)
+    
     photo_list.each do |photo_item|
       expect(photo_item).to be_a(Photo)
       expect(photo_item.url).to be_a(String)
