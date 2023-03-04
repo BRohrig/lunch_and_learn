@@ -30,5 +30,26 @@ RSpec.describe 'learning resource endpoint' do
     end
   end
 
+  it 'returns a response even when no videos or images are found for the searched country', :vcr do
+    get api_v1_learning_resources_path, params: { country: "DERP" }
+
+    expect(response).to be_successful
+
+    parsed = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed).to eq({data: {
+                                id: "null",
+                                type: "learning_resource",
+                                attributes: {
+                                            country: "DERP",
+                                            video: {},
+                                            images: []
+                                            }
+                                }
+                          }
+                        )
+                     
+  end
+
 
 end

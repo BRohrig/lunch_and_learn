@@ -7,8 +7,22 @@ class LearningResource
   def initialize(country)
     @id = "null"
     @country = country
-    @video = YouTubeFacade.find_video(country)
-    @images = UnsplashFacade.get_ten_photos(country)
+    @video =  if validate_country(country)
+                YouTubeFacade.find_video(country) 
+              else
+                {}
+              end
+    @images = if validate_country(country)
+                UnsplashFacade.get_ten_photos(country)
+              else
+                []
+              end
+  end
+
+  private
+
+  def validate_country(country)
+    CountriesFacade.country_names.include?(country)
   end
 
 
