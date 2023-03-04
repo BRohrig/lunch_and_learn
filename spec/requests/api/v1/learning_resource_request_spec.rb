@@ -6,7 +6,7 @@ RSpec.describe 'learning resource endpoint' do
 
     expect(response).to be_successful
 
-    parsed = JSON.parse(response.body, symbolize_names: true)
+    parsed = JSON.parse(response.body, symbolize_names: true)[:data]
 
     expect(parsed).to be_a(Hash)
     expect(parsed).to have_key(:id)
@@ -25,7 +25,8 @@ RSpec.describe 'learning resource endpoint' do
     expect(parsed[:attributes][:images]).to be_an(Array)
     expect(parsed[:attributes][:images].count).to eq(10)
     parsed[:attributes][:images].each do |image|
-      expect(image).to be_a(Photo)
+      expect(image).to have_key(:url)
+      expect(image).to have_key(:alt_tag)
     end
   end
 
