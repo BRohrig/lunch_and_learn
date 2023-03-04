@@ -49,6 +49,18 @@ RSpec.describe "recipes requests API V1", :vcr do
       expect(country_list).to include(recipe[:attributes][:country])
       expect(recipe[:attributes]).to have_key(:image)
     end
+  end
+
+  it 'returns an empty data array if an empty string is passed' :vcr do
+    get api_v1_recipes_path, params: {query: ""}
+
+    expect(response).to be_successful
+
+    parsed_response = JSON.parse(response.body, symbolize_names: true)
+
+    expect(parsed_response).to be_a(Hash)
+    expect(parsed_response).to have_key(:data)
+    expect(parsed_response[:data]).to eq([])
 
   end
 
