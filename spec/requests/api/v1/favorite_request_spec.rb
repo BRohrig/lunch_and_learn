@@ -43,10 +43,10 @@ RSpec.describe 'favorite recipes endpoint' do
 
   it 'can list all the favorites associated with a user' do
     user = create(:user)
-    favorite = create(:favorite)
-    favorite2 = create(:favorite)
-    favorite3 = create(:favorite)
-    favorite4 = create(:favorite)
+    favorite = create(:favorite, user_id: user.id)
+    favorite2 = create(:favorite, user_id: user.id)
+    favorite3 = create(:favorite, user_id: user.id)
+    favorite4 = create(:favorite, user_id: user.id)
 
     get api_v1_favorites_path, params: {api_key: user.api_key}
     expect(response).to be_successful
