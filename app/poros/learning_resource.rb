@@ -5,10 +5,10 @@ class LearningResource
               :id
 
   def initialize(country)
-    @id = "null"
+    @id = 'null'
     @country = country
     @video =  if validate_country(country)
-                YouTubeFacade.find_video(country) 
+                YouTubeFacade.find_video(country)
               else
                 {}
               end
@@ -24,6 +24,4 @@ class LearningResource
   def validate_country(country)
     CountriesFacade.country_names.include?(country)
   end
-
-
 end

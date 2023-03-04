@@ -15,7 +15,6 @@ class Error
   end
 
   def find_status
-    {ActiveRecord::StatementInvalid => 404}
+    { ActiveRecord::StatementInvalid => 404 }
   end
-
 end

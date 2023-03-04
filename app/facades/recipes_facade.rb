@@ -4,5 +4,4 @@ class RecipesFacade
       Recipe.new(recipe_data, country)
     end
   end
-
 end
