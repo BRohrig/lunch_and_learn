@@ -60,7 +60,7 @@ RSpec.describe "recipes requests API V1", :vcr do
 
     expect(parsed_response).to be_a(Hash)
     expect(parsed_response).to have_key(:data)
-    expect(parsed_response[:data]).to eq([])
+    expect(parsed_response).to eq({data: []})
   end
 
   it 'returns an empty data array if an unknown country is passed', :vcr do
@@ -72,7 +72,7 @@ RSpec.describe "recipes requests API V1", :vcr do
 
     expect(parsed_response).to be_a(Hash)
     expect(parsed_response).to have_key(:data)
-    expect(parsed_response[:data]).to eq([])
+    expect(parsed_response).to eq({data: []})
   end
 
 
