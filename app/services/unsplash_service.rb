@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UnsplashService
   def self.get_photos(country)
     request = conn.get("search/photos?query=#{country}")

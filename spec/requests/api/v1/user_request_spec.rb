@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'user creation endpoint' do
@@ -24,7 +26,7 @@ RSpec.describe 'user creation endpoint' do
   end
 
   it 'gives an appropriate error when a user inputs an email that is already in the db' do
-    user = User.create(name: 'mr man1', email: 'test@test.com', api_key: '2342342341')
+    User.create(name: 'mr man1', email: 'test@test.com', api_key: '2342342341')
     headers = { "Content-Type": 'application/json' }
     body = { "name": 'I am a nice user',
              "email": 'test@test.com' }

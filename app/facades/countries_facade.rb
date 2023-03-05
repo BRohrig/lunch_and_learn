@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CountriesFacade
   def self.country_names
     CountriesService.get_countries.flat_map do |country|

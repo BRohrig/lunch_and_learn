@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecipesService
   def self.get_recipes_by_country(country)
     request = conn.get("?q=#{country}")
