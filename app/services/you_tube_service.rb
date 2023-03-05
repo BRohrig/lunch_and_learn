@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class YouTubeService
   def self.get_video(country)
-    request = conn.get("search?part=snippet&channelId=UCluQ5yInbeAkkeCndNnUhpw&q=#{country}")
+    request = conn.get("search?part=snippet&channelId=UCluQ5yInbeAkkeCndNnUhpw&q=#{country}&maxResults=1")
     JSON.parse(request.body, symbolize_names: true)
   end
 

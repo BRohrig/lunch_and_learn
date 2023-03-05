@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CountriesService
   def self.get_countries
     response = conn.get('all')

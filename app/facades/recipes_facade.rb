@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RecipesFacade
   def self.get_recipes_by_country(country)
     RecipesService.get_recipes_by_country(country)[:hits].map do |recipe_data|

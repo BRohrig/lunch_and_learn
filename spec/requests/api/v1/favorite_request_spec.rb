@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'favorite recipes endpoint' do
@@ -6,7 +8,7 @@ RSpec.describe 'favorite recipes endpoint' do
   end
   it 'can receive a json body with country, recipe title, recipe link, and user api_key and create a favorite for that user' do
     headers = { "Content-Type": 'application/json' }
-    body = {  "api_key": "#{@user.api_key}",
+    body = {  "api_key": @user.api_key.to_s,
               "country": 'Brazil',
               "recipe_link": 'https://www.deliciousmeat.com/STEAK',
               "recipe_title": 'MEAT IS SO TASTY' }
@@ -43,12 +45,12 @@ RSpec.describe 'favorite recipes endpoint' do
 
   it 'can list all the favorites associated with a user' do
     user = create(:user)
-    favorite = create(:favorite, user_id: user.id)
-    favorite2 = create(:favorite, user_id: user.id)
-    favorite3 = create(:favorite, user_id: user.id)
-    favorite4 = create(:favorite, user_id: user.id)
+    create(:favorite, user_id: user.id)
+    create(:favorite, user_id: user.id)
+    create(:favorite, user_id: user.id)
+    create(:favorite, user_id: user.id)
 
-    get api_v1_favorites_path, params: {api_key: user.api_key}
+    get api_v1_favorites_path, params: { api_key: user.api_key }
     expect(response).to be_successful
 
     parsed = JSON.parse(response.body, symbolize_names: true)
@@ -58,7 +60,7 @@ RSpec.describe 'favorite recipes endpoint' do
     expect(parsed[:data].count).to eq(4)
     parsed[:data].each do |favorite|
       expect(favorite).to have_key(:id)
-      expect(favorite[:type]).to eq("favorite")
+      expect(favorite[:type]).to eq('favorite')
       expect(favorite).to have_key(:attributes)
       expect(favorite[:attributes]).to have_key(:recipe_title)
       expect(favorite[:attributes]).to have_key(:recipe_link)
@@ -72,7 +74,7 @@ RSpec.describe 'favorite recipes endpoint' do
     favorite = create(:favorite, user_id: user.id)
 
     get api_v1_favorites_path
-    
+
     expect(response).to_not be_successful
     expect(response.status).to eq(403)
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Error
   attr_reader :messages, :status
 
@@ -7,11 +9,7 @@ class Error
   end
 
   def find_messages(error)
-    if error.instance_of?(ActiveModel::Errors)
-      error.full_messages
-    else
-      [error.message]
-    end
+    error.full_messages
   end
 
   def find_status
