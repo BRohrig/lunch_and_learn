@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "tourist sight poro" do
   it 'exists and has accessible attributes' do
     sight = TouristSight.new({properties: {name: "Cool place to visit",
-                                          address_line2: "1234 cool place ave"},
-                              place_id: "1231512341"})
+                                          address_line2: "1234 cool place ave",
+                                          place_id: "1231512341"}})
 
     expect(sight.id).to eq("null")
     expect(sight.name).to eq("Cool place to visit")

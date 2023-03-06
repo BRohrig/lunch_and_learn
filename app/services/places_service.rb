@@ -1,7 +1,7 @@
 class PlacesService
 
   def self.get_tourist_sights(long_lat)
-    response = conn.get("?filter=circle:#{long_lat},20000&categories=tourism.sights")
+    response = conn.get("?filter=circle:#{long_lat},5000&categories=tourism.sights")
     JSON.parse(response.body, symbolize_names: true)
   end
 
