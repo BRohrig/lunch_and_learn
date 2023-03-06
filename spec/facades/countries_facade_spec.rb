@@ -11,4 +11,9 @@ RSpec.describe 'countries facade', :vcr do
     expect(countries_list).to include('Zambia')
     expect(countries_list).to include('New Zealand')
   end
+
+  it 'has a method to validate country existence', :vcr do
+    expect(CountriesFacade.validate_country("Canada")).to eq(true)
+    expect(CountriesFacade.validate_country("Muffintown")).to eq(false)
+  end
 end

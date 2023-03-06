@@ -16,11 +16,6 @@ RSpec.describe 'learning resource facade' do
     end
   end
 
-  it 'has a method to validate the country input', :vcr do
-    expect(LearningResourceFacade.validate_country('China')).to eq(true)
-    expect(LearningResourceFacade.validate_country('weee this is a test')).to eq(false)
-  end
-
   it 'returns empty structures for images and video if country validation fails', :vcr do
     not_a_country = LearningResourceFacade.make_resource('muffinville')
     expect(not_a_country.images).to eq([])
