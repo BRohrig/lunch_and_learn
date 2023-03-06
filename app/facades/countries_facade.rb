@@ -6,4 +6,8 @@ class CountriesFacade
       country[:name][:common]
     end
   end
+
+  def self.validate_country(country)
+    country_names.include?(country)
+  end
 end

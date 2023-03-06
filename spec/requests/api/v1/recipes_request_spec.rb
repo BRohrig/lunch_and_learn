@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'recipes requests API V1', :vcr do
   it 'can find recipes for a country' do
-    get api_v1_recipes_path, params: { query: 'Norway' }
+    get api_v1_recipes_path, params: { country: 'Norway' }
 
     expect(response).to be_successful
 
@@ -55,7 +55,7 @@ RSpec.describe 'recipes requests API V1', :vcr do
   end
 
   it 'returns an empty data array if an empty string is passed', :vcr do
-    get api_v1_recipes_path, params: { query: '' }
+    get api_v1_recipes_path, params: { country: '' }
 
     expect(response).to be_successful
 
@@ -67,7 +67,7 @@ RSpec.describe 'recipes requests API V1', :vcr do
   end
 
   it 'returns an empty data array if an unknown country is passed', :vcr do
-    get api_v1_recipes_path, params: { query: 'HappyTown!' }
+    get api_v1_recipes_path, params: { country: 'HappyTown!' }
 
     expect(response).to be_successful
 

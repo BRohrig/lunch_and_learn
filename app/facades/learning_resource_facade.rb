@@ -2,7 +2,7 @@
 
 class LearningResourceFacade
   def self.make_resource(country)
-    if validate_country(country)
+    if CountriesFacade.validate_country(country)
       images = UnsplashFacade.get_ten_photos(country)
       video = YouTubeFacade.find_video(country)
     else
@@ -10,9 +10,5 @@ class LearningResourceFacade
       video = {}
     end
     LearningResource.new(country, images, video)
-  end
-
-  def self.validate_country(country)
-    CountriesFacade.country_names.include?(country)
   end
 end
