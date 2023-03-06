@@ -16,4 +16,9 @@ RSpec.describe 'countries facade', :vcr do
     expect(CountriesFacade.validate_country("Canada")).to eq(true)
     expect(CountriesFacade.validate_country("Muffintown")).to eq(false)
   end
+
+  it 'has a method to get the longitude and latitude for a countrys capital city', :vcr do
+    expect(CountriesFacade.get_capital_long_lat("Peru")).to eq("-77.05,-12.05")
+    expect(CountriesFacade.get_capital_long_lat("Japan")).to eq("139.75,35.68")
+  end
 end
