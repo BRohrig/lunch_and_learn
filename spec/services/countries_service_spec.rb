@@ -11,4 +11,9 @@ RSpec.describe 'countries service' do
       expect(country).to have_key(:name)
     end
   end
+
+  it 'can get the lat/long of the capital city of a country', :vcr do
+    expect(CountriesService.get_capital_lat_long("Peru")).to eq([-12.05, -77.05])
+    expect(CountriesService.get_capital_lat_long("Japan")).to eq([35.68, 139.75])
+  end
 end
