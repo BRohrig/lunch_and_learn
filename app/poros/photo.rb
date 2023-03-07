@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Photo
-  attr_reader :url,
-              :alt_tag
+  attr_reader :alt_tag,
+              :url
+              
 
   def initialize(input)
     @url = input[:urls][:raw]
