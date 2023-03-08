@@ -12,6 +12,6 @@ class Recipe
     @image = recipe_data[:recipe][:image]
     @url = recipe_data[:recipe][:url]
     @country = country
-    @id = 'null'
+    @id = "null"
   end
 end

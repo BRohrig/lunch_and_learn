@@ -39,8 +39,10 @@
             { recipe2...},
         ]
       }
+
     - If no country parameter is input, the endpoint will choose a random country and return recipes for that country.
     - If an invalid query parameter is input, this endpoint will return an empty data array as follows: 
+
       {
         "data": []
       }
@@ -68,7 +70,9 @@
           }
         }
       }
+
     - If an invalid country parameter is passed, this endpoint will return empty photo and video attributes in its JSON response as follows:
+    
       {
         "data": {
             "id": "null",
